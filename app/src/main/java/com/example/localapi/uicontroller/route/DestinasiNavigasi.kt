@@ -1,4 +1,4 @@
-package com.example.mydatasisw.uicontroller.route
+package com.example.localapi.uicontroller.route
 
 interface DestinasiNavigasi {
     val route: String
