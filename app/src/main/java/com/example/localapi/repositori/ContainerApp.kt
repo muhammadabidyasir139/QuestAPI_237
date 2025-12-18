@@ -15,7 +15,7 @@ class DefaultContainerApp : ContainerApp {
     private val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .addConverterFactory(com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory(json.asConverterFactory("application/json".toMediaType())))
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseurl)
         .build()
         
