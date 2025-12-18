@@ -39,3 +39,4 @@ fun DataSiswa.toDetailSiswa(): DetailSiswa = DetailSiswa (
     nama = nama,
     alamat = alamat,
     telpon = telpon
+)
