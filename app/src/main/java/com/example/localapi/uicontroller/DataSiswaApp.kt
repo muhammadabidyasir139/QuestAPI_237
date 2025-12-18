@@ -13,7 +13,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.localapi.ui.view.siswa.DestinasiEntry
+import com.example.localapi.uicontroller.route.DestinasiEntry
 import com.example.localapi.ui.view.siswa.EntrySiswaScreen
 import com.example.localapi.ui.view.siswa.HomeScreen
 import com.example.localapi.uicontroller.route.DestinasiHome
