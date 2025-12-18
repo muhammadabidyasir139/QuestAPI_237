@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">local api</string>
+    <string name="entry_siswa">Entry Siswa</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+    <string name="telpon">Telepon</string>
+    <string name="required_field">Diisi Ya bang</string>
+    <string name="simpan">Simpan</string>
 </resources>
