@@ -27,6 +27,7 @@ import com.example.localapi.modeldata.DetailSiswa
 import com.example.localapi.modeldata.UIStateSiswa
 import com.example.localapi.uicontroller.NavigasiTopAppBar
 import com.example.localapi.uicontroller.route.DestinasiNavigasi
+import com.example.localapi.uicontroller.route.DestinasiEntry
 import com.example.localapi.viewmodel.EntryViewModel
 import kotlinx.coroutines.launch
 
