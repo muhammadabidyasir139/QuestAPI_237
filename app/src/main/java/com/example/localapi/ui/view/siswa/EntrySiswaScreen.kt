@@ -30,10 +30,7 @@ import com.example.localapi.uicontroller.route.DestinasiNavigasi
 import com.example.localapi.viewmodel.EntryViewModel
 import kotlinx.coroutines.launch
 
-object DestinasiEntry : DestinasiNavigasi {
-    override val route = "item_entry"
-    override val titleRes = R.string.entry_siswa
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
