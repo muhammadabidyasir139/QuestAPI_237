@@ -13,6 +13,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Place
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,6 +49,10 @@ fun HomeScreen(
     onDetailClick: (Int) -> Unit = {},
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
+    androidx.compose.runtime.LaunchedEffect(Unit) {
+        viewModel.getSiswa()
+    }
+
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
@@ -87,32 +94,13 @@ fun HomeStatus(
     onDetailClick: (Int) -> Unit
 ) {
     when (siswaUiState) {
-        is StatusUiSiswa.Loading -> OnLoading(modifier = modifier.fillMaxSize())
+        is StatusUiSiswa.Loading -> com.example.localapi.ui.view.LoadingScreen(modifier = modifier.fillMaxSize())
         is StatusUiSiswa.Success -> SiswaList(
             siswaList = siswaUiState.siswas,
             modifier = modifier.fillMaxWidth(),
             onDetailClick = onDetailClick
         )
-        is StatusUiSiswa.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
-    }
-}
-
-@Composable
-fun OnLoading(modifier: Modifier = Modifier) {
-    Text("Loading...", modifier = modifier)
-}
-
-@Composable
-fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text("Loading Failed")
-        androidx.compose.material3.Button(onClick = retryAction) {
-            Text("Retry")
-        }
+        is StatusUiSiswa.Error -> com.example.localapi.ui.view.ErrorScreen(retryAction, modifier = modifier.fillMaxSize())
     }
 }
 
@@ -152,18 +140,48 @@ fun SiswaCard(
             modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large)),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
         ) {
-            Text(
-                text = siswa.nama,
-                style = MaterialTheme.typography.titleLarge
-            )
-            Text(
-                text = siswa.alamat,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = siswa.telpon,
-                style = MaterialTheme.typography.titleMedium
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "",
+                )
+                Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small)))
+                Text(
+                    text = siswa.nama,
+                    style = MaterialTheme.typography.titleLarge
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Place,
+                    contentDescription = "",
+                )
+                Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small)))
+                Text(
+                    text = siswa.alamat,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Phone,
+                    contentDescription = "",
+                )
+                Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small)))
+                Text(
+                    text = siswa.telpon,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
         }
     }
 }
