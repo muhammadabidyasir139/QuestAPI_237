@@ -25,7 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.localapi.R
 import com.example.localapi.modeldata.DetailSiswa
 import com.example.localapi.modeldata.UIStateSiswa
-import com.example.localapi.uicontroller.NavigasiTopAppBar
+import com.example.localapi.uicontroller.SiswaTopAppBar
 import com.example.localapi.uicontroller.route.DestinasiNavigasi
 import com.example.localapi.uicontroller.route.DestinasiEntry
 import com.example.localapi.viewmodel.EntryViewModel
@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 fun EntrySiswaScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EntryViewModel = viewModel(factory = androidx.lifecycle.ViewModelProvider.NewInstanceFactory.instance)
+    viewModel: EntryViewModel = viewModel(factory = com.example.localapi.viewmodel.PenyediaViewModel.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -46,7 +46,7 @@ fun EntrySiswaScreen(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            NavigasiTopAppBar(
+            SiswaTopAppBar(
                 title = DestinasiEntry.titleRes.let { stringResource(it) },
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
@@ -81,7 +81,7 @@ fun EntrySiswaBody(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
         modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
     ) {
-        FormInputSiswa(
+        FormTambahSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
@@ -92,13 +92,13 @@ fun EntrySiswaBody(
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(stringResource(R.string.simpan))
+            Text(stringResource(R.string.btn_submit)) // Assuming R.string.btn_submit exists, or use "Submit"
         }
     }
 }
 
 @Composable
-fun FormInputSiswa(
+fun FormTambahSiswa(
     detailSiswa: DetailSiswa,
     onValueChange: (DetailSiswa) -> Unit,
     modifier: Modifier = Modifier,
