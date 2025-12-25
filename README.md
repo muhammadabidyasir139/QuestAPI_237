@@ -1,17 +1,2 @@
-# Student Entry App
-
-This application allows users to enter student details (Name, Address, Phone).
-
-## Features
-- Entry Form with validation
-- Navigation setup
-- MVVM Architecture implementation
-
-## Components
-- **DestinasiNavigasi**: Navigation interface
-- **EntryViewModel**: Manages UI state and data operations
-- **EntrySiswaScreen**: UI composable for data entry
-- **RepositoryDataSiswa**: Data repository interface
-
-## Usage
-Run the app and use the entry form to add new students.
+![data get](https://github.com/user-attachments/assets/3a3fbfec-1a6e-4d7c-ac82-a5bb95b5cebf)
+![data tambah](https://github.com/user-attachments/assets/6cc56303-5a4b-404c-8773-43f05b474cce)
