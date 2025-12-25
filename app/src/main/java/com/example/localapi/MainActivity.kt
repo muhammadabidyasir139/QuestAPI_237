@@ -17,11 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LocalApiTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    DataSiswaApp(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                DataSiswaApp(modifier = Modifier.fillMaxSize())
             }
         }
     }
