@@ -17,6 +17,10 @@ import com.example.localapi.uicontroller.route.DestinasiEntry
 import com.example.localapi.ui.view.siswa.EntrySiswaScreen
 import com.example.localapi.ui.view.siswa.HomeScreen
 import com.example.localapi.uicontroller.route.DestinasiHome
+import com.example.localapi.uicontroller.route.DestinasiDetail
+import com.example.localapi.ui.view.siswa.DetailSiswaScreen
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 
 @Composable
 fun DataSiswaApp(
@@ -34,17 +38,30 @@ fun HostNavigasi(
     NavHost(
         navController = navController,
         startDestination = DestinasiHome.route,
-        modifier = modifier
+        modifier = modifier.fillMaxSize()
     ) {
         composable(DestinasiHome.route) {
             HomeScreen(
                 navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
-                onDetailClick = { /* Navigate to detail */ }
+                onDetailClick = { itemId ->
+                    navController.navigate("${DestinasiDetail.route}/$itemId")
+                }
             )
         }
         composable(DestinasiEntry.route) {
             EntrySiswaScreen(
                 navigateBack = { navController.popBackStack() }
+            )
+        }
+        composable(
+            DestinasiDetail.routeWithArgs,
+            arguments = listOf(navArgument(DestinasiDetail.idSiswa) {
+                type = NavType.StringType
+            })
+        ) {
+            DetailSiswaScreen(
+                navigateBack = { navController.popBackStack() },
+                navigateToEdit = { /* navController.navigate("${DestinasiEdit.route}/$it") */ }
             )
         }
     }
