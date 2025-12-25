@@ -19,12 +19,12 @@ class DefaultContainerApp : ContainerApp {
         .baseUrl(baseurl)
         .build()
         
-    private val serviceApiSiswa: serviceApiSiswa by lazy {
+    private val siswaApiService: serviceApiSiswa by lazy {
         retrofit.create(serviceApiSiswa::class.java)
     }
 
     override val repositoryDataSiswa: RepositoryDataSiswa by lazy {
-        JaringanRepositoryDataSiswa(serviceApiSiswa)
+        JaringanRepositoryDataSiswa(siswaApiService)
     }
 }
 
