@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.createSavedStateHandle
 import com.example.localapi.repositori.AplikasiDataSiswa
 
 object PenyediaViewModel {
@@ -13,6 +14,9 @@ object PenyediaViewModel {
         }
         initializer {
             EntryViewModel(aplikasiDataSiswa().container.repositoryDataSiswa)
+        }
+        initializer {
+            DetailViewModel(createSavedStateHandle(), aplikasiDataSiswa().container.repositoryDataSiswa)
         }
     }
 }
